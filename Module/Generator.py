@@ -31,9 +31,8 @@ class Generator():
         return sys_prompt, user_prompt
 
     def response_build(self, inquiry, context, memories, user_traits, agent_traits):
-        sys_prompt, user_prompt = self.select_prompts(context, memories, user_traits, agent_traits, inquiry)
+        sys_prompt, user_prompt = self.select_prompts(inquiry, context, memories, user_traits, agent_traits)
 
         response = self.LLMclient.employ(sys_prompt, user_prompt, "ResponseGenerator")
-
 
         return response
