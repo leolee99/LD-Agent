@@ -10,7 +10,7 @@
 </a>
 
 <p align="center" style="overflow:hidden;">
- <img src="assets/LD-Agent.png" width="100%" style="margin: -10% -10% -10% -10%;">
+ <img src="assets/LD-Agent.png" width="90%" style="margin: -0% -0% -0% -0%;">
 </p>
 
 </div>
