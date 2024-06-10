@@ -77,6 +77,7 @@ You can adjust the detailed training configs in ```Trainer/configs```.
 We provide the evaluation implementations on both [ChatGPT](https://chatgpt.com/) and [ChatGLM3-6B](https://huggingface.co/THUDM/chatglm3-6b).
 
 **ChatGPT**
+
 To evaluate using ChatGPT, you can edit the ```${API_KEY}``` in ```scripts/msc_gpt_eval.sh``` to your openai API key and run:
 ```bash
 bash scripts/msc_gpt_eval.sh
@@ -84,6 +85,7 @@ bash scripts/msc_gpt_eval.sh
 
 
 **ChatGLM**
+
 To evaluate using ChatGLM3-6B, you can run:
 ```bash
 bash scripts/msc_glm_eval.sh
