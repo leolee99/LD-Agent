@@ -15,7 +15,7 @@
 
 </div>
 
-The official implementation for paper of **"Hello Again! LLM-powered Personalized Agent for Long-term Dialogue."**
+The official implementation for paper of **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
 
 
 <p id="Preparations"></p>  
@@ -91,3 +91,17 @@ To evaluate using ChatGLM3-6B, you can run:
 bash scripts/msc_glm_eval.sh
 ```
 Edit the ```${SUMMARIZER}```, ```${EXTRACTOR}```, and ```${GENERATOR}``` to specify the LoRA models used for event summary, persona extraction, and response generation, respectively. The setting of ```"default"``` indicates employing original ChatGLM to the target module.
+
+
+### Reference
+
+If you found this code useful, please cite the following paper:
+```
+
+@article{LD-Agent,
+  title={Hello Again! LLM-powered Personalized Agent for Long-term Dialogue},
+  author={Li, Hao and Yang, Chenghao and Zhang, An and Deng, Yang and Wang, Xiang and Chua, Tat-Seng},
+  journal={arXiv preprint arXiv:2406.05925},
+  year={2024}
+}
+```
