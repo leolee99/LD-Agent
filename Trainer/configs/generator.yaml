@@ -1,13 +1,13 @@
 data_config:
-  train_file: msc_train_dialogsum_new_prompt_ab_memory.json
-  val_file: msc_test_dialogsum_new_prompt_ab_memory.json
-  test_file: msc_test_dialogsum_new_prompt_ab_memory.json
+  train_file: train.json
+  val_file: test.json
+  test_file: test.json
   num_proc: 16
 max_input_length: 2048
 max_output_length: 64
 training_args:
   # see `transformers.Seq2SeqTrainingArguments`
-  output_dir: /data1/chyang/new_prompt_dialogsum_ab_memory
+  output_dir: logs/models/generator
   max_steps: 25000
   # settings for data loading
   per_device_train_batch_size: 4
