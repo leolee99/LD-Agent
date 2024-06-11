@@ -35,7 +35,7 @@ def get_args(description='Config of LD-Agent'):
 
     parser.add_argument('--log_step', type=int, default=50, help='The number of report frequency.')
     parser.add_argument('--generation_out', type=bool, default=False, help='Wether to output generated messages.')
-    parser.add_argument('--test_num', type=int, default=501, help='The number of test samples.')
+    parser.add_argument('--test_num', type=int, default=501, help='The number of test samples, 0 indicates testing all samples.')
     parser.add_argument('--gpus', type=str, default="0", help='The gpus will be used.')
     parser.add_argument('--build_times', type=int, default=1, help='The times of building response.')
 

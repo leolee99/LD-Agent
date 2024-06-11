@@ -43,6 +43,8 @@ class MSC():
         # ==== dataset setting ==== #
         with open(os.path.join(args.data_path, args.data_name), 'r') as f:
             self.dataset = json.load(f)
+            if args.test_num > 0:
+                self.dataset = self.dataset[:args.test_num]
             self.logger.info(f"Total {len(self.dataset)} samples to be evaluated.")
         
         # ==== memory setting ==== #
