@@ -3,19 +3,37 @@
 
 <h1>Hello Again! LLM-powered Personalized Agent for Long-term Dialogue</h1>
 
-
-
 <a href="LICENSE">
 <img src="https://img.shields.io/badge/License-MIT-blue" alt="Github license"/>
 </a>
+
+<div>
+      <a href="https://leolee99.github.io/" target="_blank">Hao Li</a><sup>1</sup><sup>*</sup>,
+      <a href="https://syuchin.github.io/" target="_blank">Chenghao Yang</a><sup>2</sup><sup>*</sup>,
+    <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a><sup>3</sup><sup>&dagger;</sup>,
+    <a href="https://dengyang17.github.io/" target="_blank">Yang Deng</a><sup>3</sup>,
+      <a href="https://xiangwang1223.github.io./" target="_blank">Xiang Wang</a><sup>2</sup>,
+      <a href="https://www.chuatatseng.com/" target="_blank">Tat-Seng Chua</a><sup>3</sup>,
+
+<div>
+  <sup>1</sup>University of Electronic Science and Technology of China
+       </div>   
+  <sup>2</sup>University of Science and Technology of China
+       </div>   
+  <sup>3</sup>National University of Singapore
+
 
 <p align="center" style="overflow:hidden;">
  <img src="assets/LD-Agent.png" width="90%" style="margin: -0% -0% -0% -0%;">
 </p>
 
+<p align="center" style="overflow:hidden;">
+ <img src="assets/Results.png" width="90%" style="margin: -0% -0% -0% -0%;">
+</p>
+
 </div>
 
-The official implementation for paper of **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
+The official implementation of paper **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
 
 
 <p id="Preparations"></p>  
@@ -100,7 +118,12 @@ If you found this code useful, please cite the following paper:
 
 @article{LD-Agent,
   title={Hello Again! LLM-powered Personalized Agent for Long-term Dialogue},
-  author={Li, Hao and Yang, Chenghao and Zhang, An and Deng, Yang and Wang, Xiang and Chua, Tat-Seng},
+  author={Li, Hao and 
+          Yang, Chenghao and 
+          Zhang, An and 
+          Deng, Yang and 
+          Wang, Xiang and 
+          Chua, Tat-Seng},
   journal={arXiv preprint arXiv:2406.05925},
   year={2024}
 }
