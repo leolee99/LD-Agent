@@ -58,7 +58,9 @@ The recommended GPU memory is more than 32 GB.
 
 ### Dataset Preparation
 
-The datasets for event summary, persona extraction, response generation and MSC can be downloaded [here](https://drive.google.com/drive/folders/1ZyYYofzFWW2CxtW0XQZxMQtJ2EtroULX?usp=sharing). Please organize the dataset path as ```LD-Agent/dataset```.
+The datasets for event summary, persona extraction, response generation and MSC can be downloaded [here](https://drive.google.com/drive/folders/1ZyYYofzFWW2CxtW0XQZxMQtJ2EtroULX?usp=sharing). Please organize the dataset path as ```LD-Agent/dataset```. 
+**Update**
+The relevant data for the Conversation Chronicles (CC) dataset mentioned in the paper has been updated. You can access it via the following link: [CC](https://drive.google.com/drive/folders/1N05vGwKDGXQ81wZeyGEIxhhLt40lhf49?usp=sharing). Similarly, place it under the ```LD-Agent/dataset``` path.
 
 
 ### Metric Preparation
