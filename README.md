@@ -36,7 +36,7 @@ The official implementation of NAACL 2025 paper **"[Hello Again! LLM-powered Per
 
 ## 🎉 News 
 
-- [2025.2.13] 🛠️ We update the data sampling [code](https://github.com/leolee99/scripts/msc_glm_sampling.sh).
+- [2025.2.13] 🛠️ We update the data sampling [code](https://github.com/leolee99/LD-Agent/blob/main/scripts/msc_glm_sampling.sh).
 - [2025.1.26] 🎉🎉 Our paper has been accepted to [NAACL 2025](https://arxiv.org/pdf/2406.05925).
 
 <p id="Preparations"></p>  
