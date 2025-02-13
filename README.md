@@ -32,7 +32,7 @@
 
 </div>
 
-The official implementation of NAACL 2025 paper **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
+The official implementation of NAACL 2025 paper **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925)"**.
 
 ## 🎉 News 
 
@@ -69,7 +69,7 @@ The datasets for event summary, persona extraction, response generation and MSC 
 
 To automatically evaluate response quality, you should download the compressed metric files [here](https://drive.google.com/file/d/122sh6_nsu9ZHuefQeAPEpnX0X6jJdPXA/view?usp=sharing). Then decompress it and organize it to ```LD-Agent/nlgeval/metric```.
 
-### Checkpoints
+## 💾 Checkpoints
 
 You can download our tuned checkpoints of extractor, summarizer, and generator [here](https://drive.google.com/drive/folders/1o59iS9Hr0uol_yentajBw1mJIllIDlGJ?usp=sharing).
 
@@ -134,7 +134,11 @@ If you want to sample data using your self-trained summarizer, extractor, and ge
 bash scripts/msc_glm_sampling.sh
 ```
 
-### Reference
+## 📑 To DO 
+
+- Code and datasets of CC.
+
+### 📖 Reference
 
 If you found this code useful, please cite the following paper:
 ```
