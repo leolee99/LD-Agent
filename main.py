@@ -8,7 +8,7 @@ import torch.backends.cudnn as cudnn
 
 from config import get_args
 from DataLoader.MSC import MSC
-
+from DataLoader.QuickEval import QuickEval
 
 def set_seed_logger(args):
     random.seed(args.seed)
@@ -52,3 +52,7 @@ if __name__ == "__main__":
     if args.dataset == "msc":
         msc = MSC(args, logger)
         msc.evaluation()
+
+    elif args.dataset == "quickeval":
+        quick_eval = QuickEval(args, logger)
+        quick_eval.evaluation()

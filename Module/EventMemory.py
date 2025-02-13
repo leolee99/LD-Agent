@@ -303,4 +303,3 @@ class MetaData():
         if self.datatype not in ['image', 'text']:
             raise ValueError("datatype must be 'image' or 'text'")
         
-        

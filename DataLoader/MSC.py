@@ -29,6 +29,7 @@ class MSC():
     def __init__(self, args, logger):
         self.args = args
         self.logger = logger
+        self.sampling_dataset = []
 
         if args.client == "chatgpt":
             self.client = GPTClient(args.model, logger, args)
@@ -64,7 +65,7 @@ class MSC():
         self.logger.info(f'Memory ID: {sample_id}')
         memory_bank = EventMemory(self.client, sample_id=sample_id, logger=self.logger, args=args, memory_cache=self.memory_cache)
         personas = Personas(self.client, logger=self.logger, args=args)
-        response_generator = Generator(self.client, sample_id, logger=self.logger, args=args)
+        response_generator = Generator(self.client, self.sampling_dataset, sample_id, logger=self.logger, args=args)
 
         for idx, dial in enumerate(self.dataset[sample_id][0]['dialog']):
             current_time = time.time() + memory_bank.current_time_pass
@@ -154,7 +155,10 @@ class MSC():
             # response generation
             for i in range(args.build_times):
                 self.logger.info(f"The building turn: {i}.")
-                response = response_generator.response_build(dial['SPEAKER_1'], merged_context, merged_relevant_memory, current_user_traits, current_agent_traits)
+                if args.sampling:
+                    response = response_generator.sampling(dial['SPEAKER_1'], dial['SPEAKER_2'], merged_context, merged_relevant_memory, current_user_traits, current_agent_traits)
+                else:
+                    response = response_generator.response_build(dial['SPEAKER_1'], merged_context, merged_relevant_memory, current_user_traits, current_agent_traits)
 
                 if args.generation_out:
                     self.logger.info(f"inquiry: {dial['SPEAKER_1']}")
@@ -188,13 +192,13 @@ class MSC():
             # initialize the first session
             memory_bank, personas, response_generator = self.memory_bank_init(idx, self.args)
             memory_bank.current_time_pass += self.dataset[idx][0]['time_pass']
-            for session_num, i in enumerate(range(1, 5)):
+            for session_num, i in enumerate(range(self.args.min_session, self.args.max_session)):
                 score, memory_bank, personas, response_generator = self.interative_eval(idx, i, memory_bank, personas, response_generator, self.args)
 
                 # update time pass
                 memory_bank.current_time_pass += self.dataset[idx][i]['time_pass']
-                all_sessions_score.append(score)
 
+                all_sessions_score.append(score)
             avg_score = sum(all_sessions_score) / len(all_sessions_score)
             self.logger.info(f"Average Sample {idx} Result:")
             self.logger.info(f"B-1: {avg_score[0]};  B-2: {avg_score[1]};  B-3: {avg_score[2]};  B-4: {avg_score[3]}; R-L: {avg_score[4]}; Dist-1: {avg_score[5]}; Dist-2: {avg_score[6]}; Dist-3: {avg_score[7]}")
@@ -205,7 +209,7 @@ class MSC():
 
             if (idx + 1) % self.args.log_step == 0:
                 self.logger.info(f"The Average Results of {idx + 1} Samples:")
-                for session_number in range(2, 6):
+                for session_number in range(self.args.min_session + 1, self.args.max_session + 1):
                     try:
                         score_session = [sample[session_number - 2] for sample in all_samples_score]
                         avg_score = sum(score_session) / len(score_session)
@@ -216,8 +220,13 @@ class MSC():
                     except:
                         self.logger.info(f"session_number {session_number} is out of list index.")
         
+        if self.args.sampling:
+            self.sampling_file = os.path.join(self.args.sampling_path, self.args.sampling_file_name)
+            with open(self.sampling_file, "w") as f:
+                    json.dump(self.sampling_dataset, f, indent=4)
+
         self.logger.info(f"The Average Results of {idx + 1} Samples:")
-        for session_number in range(2, 6):
+        for session_number in range(self.args.min_session + 1, self.args.max_session + 1):
             try:
                 score_session = [sample[session_number - 2] for sample in all_samples_score]
                 avg_score = sum(score_session) / len(score_session)

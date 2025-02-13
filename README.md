@@ -1,5 +1,4 @@
 <div align=center>
-<!-- <h1>Avatar: Agent-based Virtual Approach to Large Scale Recommendation Simulation</h1> -->
 
 <h1>Hello Again! LLM-powered Personalized Agent for Long-term Dialogue</h1>
 
@@ -10,17 +9,17 @@
 <div>
       <a href="https://leolee99.github.io/" target="_blank">Hao Li</a><sup>1</sup><sup>*</sup>,
       <a href="https://syuchin.github.io/" target="_blank">Chenghao Yang</a><sup>2</sup><sup>*</sup>,
-    <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a><sup>3</sup><sup>&dagger;</sup>,
+    <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a><sup>1</sup><sup>&dagger;</sup>,
     <a href="https://dengyang17.github.io/" target="_blank">Yang Deng</a><sup>3</sup>,
       <a href="https://xiangwang1223.github.io./" target="_blank">Xiang Wang</a><sup>2</sup>,
-      <a href="https://www.chuatatseng.com/" target="_blank">Tat-Seng Chua</a><sup>3</sup>,
+      <a href="https://www.chuatatseng.com/" target="_blank">Tat-Seng Chua</a><sup>1</sup>,
 
 <div>
-  <sup>1</sup>University of Electronic Science and Technology of China
+  <sup>1</sup>National University of Singapore
        </div>   
   <sup>2</sup>University of Science and Technology of China
        </div>   
-  <sup>3</sup>National University of Singapore
+  <sup>3</sup>Singapore Management University
 
 
 <p align="center" style="overflow:hidden;">
@@ -28,12 +27,17 @@
 </p>
 
 <p align="center" style="overflow:hidden;">
- <img src="assets/Results.png" width="90%" style="margin: -0% -0% -0% -0%;">
+ <img src="assets/results.png" width="90%" style="margin: -0% -0% -0% -0%;">
 </p>
 
 </div>
 
-The official implementation of paper **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
+The official implementation of NAACL 2025 paper **"[Hello Again! LLM-powered Personalized Agent for Long-term Dialogue](https://arxiv.org/pdf/2406.05925v1)"**.
+
+## 🎉 News 
+
+- [2025.1.26] 🎉🎉 Our paper has been accepted to [NAACL 2025](https://arxiv.org/pdf/2410.22770).
+- [2024.10.27] 🛠️ We update the data sampling [code](https://github.com/leolee99/scripts/msc_glm_sampling).
 
 
 <p id="Preparations"></p>  
@@ -58,14 +62,16 @@ The recommended GPU memory is more than 32 GB.
 
 ### Dataset Preparation
 
-The datasets for event summary, persona extraction, response generation and MSC can be downloaded [here](https://drive.google.com/drive/folders/1ZyYYofzFWW2CxtW0XQZxMQtJ2EtroULX?usp=sharing). Please organize the dataset path as ```LD-Agent/dataset```. 
-**Update**
-The relevant data for the Conversation Chronicles (CC) dataset mentioned in the paper has been updated. You can access it via the following link: [CC](https://drive.google.com/drive/folders/1N05vGwKDGXQ81wZeyGEIxhhLt40lhf49?usp=sharing). Similarly, place it under the ```LD-Agent/dataset``` path.
+The datasets for event summary, persona extraction, response generation and MSC can be downloaded [here](https://drive.google.com/drive/folders/1ZyYYofzFWW2CxtW0XQZxMQtJ2EtroULX?usp=sharing). Please organize the dataset path as ```LD-Agent/dataset```.
 
 
 ### Metric Preparation
 
-To automatically evaluate response quality, you should download the compressed metric files [here](https://drive.google.com/file/d/1nVDX9Ib796pKXiWKoMSC07Yv04SZ3LuD/view?usp=sharing). Then decompress it and organize it to ```LD-Agent/nlgeval/metric```.
+To automatically evaluate response quality, you should download the compressed metric files [here](https://drive.google.com/file/d/122sh6_nsu9ZHuefQeAPEpnX0X6jJdPXA/view?usp=sharing). Then decompress it and organize it to ```LD-Agent/nlgeval/metric```.
+
+### Checkpoints
+
+You can download our tuned checkpoints of extractor, summarizer, and generator [here](https://drive.google.com/drive/folders/1o59iS9Hr0uol_yentajBw1mJIllIDlGJ?usp=sharing).
 
 <p id="Quick Start"></p>  
 
@@ -112,13 +118,28 @@ bash scripts/msc_glm_eval.sh
 ```
 Edit the ```${SUMMARIZER}```, ```${EXTRACTOR}```, and ```${GENERATOR}``` to specify the LoRA models used for event summary, persona extraction, and response generation, respectively. The setting of ```"default"``` indicates employing original ChatGLM to the target module.
 
+**Evaluation with Annotated Personas on MSC**
+
+We also provide an evaluation process on MSC using its annotations as personas:
+
+```bash
+bash scripts/msc_glm_quick_eval.sh
+```
+
+### Data Sampling
+
+If you want to sample data using your self-trained summarizer, extractor, and generator. Please edit the ```${SAMPLING_PATH}``` to the save path, and then run:
+
+```bash
+bash scripts/msc_glm_sampling.sh
+```
 
 ### Reference
 
 If you found this code useful, please cite the following paper:
 ```
 
-@article{LD-Agent,
+@article{LDAgent,
   title={Hello Again! LLM-powered Personalized Agent for Long-term Dialogue},
   author={Li, Hao and 
           Yang, Chenghao and 
@@ -126,7 +147,7 @@ If you found this code useful, please cite the following paper:
           Deng, Yang and 
           Wang, Xiang and 
           Chua, Tat-Seng},
-  journal={arXiv preprint arXiv:2406.05925},
-  year={2024}
+  journal={NAACL},
+  year={2025}
 }
 ```

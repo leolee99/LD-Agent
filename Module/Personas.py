@@ -10,15 +10,24 @@ class Personas():
         self.agent_traits = []
         self.usr_name = args.usr_name
         self.agent_name = args.agent_name
+        self.max_agent_personas = args.max_agent_personas
+        self.max_user_personas = args.max_user_personas
 
         self.LLMclient = client
 
     def traits_update(self, inquiry, response):
-        current_user_traits = self.user_traits_update(inquiry)
-        current_agent_traits = self.agent_traits_update(response)
+        self.user_traits_update(inquiry)
+        if len(self.user_traits) <= self.max_user_personas:
+            merged_user_traits = "\n".join(self.user_traits)
+        else:
+            merged_user_traits = "\n".join(self.user_traits[-self.max_user_personas:])
 
-        merged_user_traits = "\n".join(current_user_traits)
-        merged_agent_traits = "\n".join(current_agent_traits)
+        if len(self.agent_traits) <= self.max_agent_personas:
+            merged_agent_traits = "\n".join(self.agent_traits)
+        else:
+            merged_agent_traits = "\n".join(self.agent_traits[-self.max_agent_personas:])
+
+        self.agent_traits_update(response)
 
         # self.logger.info(merged_user_traits)
         # self.logger.info(merged_agent_traits)
@@ -65,10 +74,5 @@ class Personas():
 
         return self.agent_traits
 
-    
-    
 
-
-
-        
         
